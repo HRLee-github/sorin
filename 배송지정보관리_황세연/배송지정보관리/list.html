@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>배송지 목록</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+    />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/sign.css" />
+    <script src="js/script.js" defer></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="js/jquery-3.6.1.min.js" ></script>
+
+  </head>
+  <body>
+    
+    <script>
+
+
+      /**script.js에서 구현한 체크박스 기능이 안 먹혀서 따로 list.html에 적용해주었습니다..*/
+
+      function is_checked(){
+        
+        const checkAll = document.querySelector("input[id=check_all]");
+        const is_checked = checkAll.checked;
+        const checkList = document.querySelectorAll("input[id=check]");
+        const is_checkList = checkList.checked;
+
+        // for(var i= 0; i < checkList.length; i++){
+        //   checkList[i].checked =  checkList.checked;
+        // }
+          if(is_checked){
+           
+            for(var i = 0; i < checkList.length; i++){
+              checkList[i].checked = checkList.checked;
+            }
+          }if (! is_checked) {
+            
+            for(var i= 0; i < checkList.length; i++){
+         
+              checkList[i].checked =  this.checked;
+        }
+          } else {
+            
+          }
+      
+      }
+    
+ 
+
+    </script>
+    <main>
+      <section class="banner cont_p">
+        <h2 class="banner_tt">배송지 목록</h2>
+        <div class="confirm">
+          <div class="wrapper">
+            <div class="btn-group">
+              <button class="del" id="delete">선택삭제</button>
+            </div>
+            <table id="table" class="table table-hover table-mc-light-blue">
+              <!-- 8 cols -->
+              <colgroup>
+                <col style="width:5%;"/>
+                <col style="width:10%;" />
+                <col style="width:10%;" />
+                <col style="width:10%;" />
+                <col />
+                <col style="width:10%;" />
+                <col style="width:10%;" />
+                <col style="width:8%;" />
+              </colgroup>
+               <thead id="thead">
+                  <tr>
+                    <th>
+                      <input type="checkbox" id="check_all" onchange='is_checked()' />
+                    </th>
+                    <th id="test">배송지</th>
+                    <th>수령인</th>
+                    <th>연락처</th>
+                    <th>주소</th>
+                    <th>기본 배송지</th>
+                    <th>배송정보 <br />수집</th>
+                    <th>수정</th>
+                   </tr>
+                   <tbody id="tbodyList"></tbody>
+                  </thead>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="js/script2.js"></script>
+  </body>
+</html>
